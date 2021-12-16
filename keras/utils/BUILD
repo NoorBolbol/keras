@@ -89,6 +89,17 @@ py_library(
     name = "io_utils",
     srcs = ["io_utils.py"],
     srcs_version = "PY3",
+    deps = [
+        ":logging",
+        "//:expect_tensorflow_installed",
+        "//third_party/py/absl/logging",
+    ],
+)
+
+py_library(
+    name = "logging",
+    srcs = ["logging.py"],
+    srcs_version = "PY3",
 )
 
 py_library(
@@ -345,6 +356,8 @@ tf_py_test(
         "notsan",
     ],
     deps = [
+        ":io_utils",
+        ":logging",
         "//:expect_absl_installed",
         "//:expect_numpy_installed",
         "//:expect_tensorflow_installed",
