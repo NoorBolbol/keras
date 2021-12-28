@@ -1696,6 +1696,14 @@ class Model(base_layer.Layer, version_utils.ModelVersionSelector):
             model=self,
             steps_per_execution=self._steps_per_execution)
 
+      # pylint: disable=protected-access
+      if sample_weight is not None and self.compiled_metrics._user_weighted_metrics is None:
+        logging.warning(
+            'evaluate() received a value for `sample_weight`, but neither'
+            ' weighted_metrics nor a loss were provided.  Did you mean to pass'
+            ' metrics to `weighted_metrics` in compile()?  If this is intentional'
+            ' you can pass weighted_metrics=[] to compile() in order to silence'
+            ' this warning.')
       # Container that configures and calls `tf.keras.Callback`s.
       if not isinstance(callbacks, callbacks_module.CallbackList):
         callbacks = callbacks_module.CallbackList(
