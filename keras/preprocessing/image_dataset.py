@@ -24,7 +24,7 @@ from keras.preprocessing import image as keras_image_ops
 from tensorflow.python.util.tf_export import keras_export
 
 
-ALLOWLIST_FORMATS = ('.bmp', '.gif', '.jpeg', '.jpg', '.png')
+ALLOWLIST_FORMATS = ('.bmp', '.gif', '.jpeg', '.jpg', '.png', 'jp2')
 
 
 @keras_export('keras.utils.image_dataset_from_directory',
